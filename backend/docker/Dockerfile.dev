@@ -1,0 +1,33 @@
+# syntax=docker/dockerfile:1
+FROM python:3.13-slim
+
+# Install uv from official image
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+# Install system dependencies including Tesseract OCR
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tesseract-ocr \
+    tesseract-ocr-eng \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory and environment variables
+WORKDIR /app
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    UV_LINK_MODE=copy \
+    UV_PROJECT_ENVIRONMENT=/app/.venv
+
+# Copy dependency definition files
+COPY pyproject.toml uv.lock ./
+
+# Install all dependencies (including development and testing tools)
+RUN uv sync --frozen
+
+# Copy project files
+COPY . .
+
+# Expose backend API port
+EXPOSE 8000
+
+# Run development server with hot-reload
+CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

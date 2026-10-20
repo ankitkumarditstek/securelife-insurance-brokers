@@ -1,0 +1,8 @@
+Generic single-database configuration.
+
+
+
+
+docker compose exec backend uv run alembic upgrade head
+
+docker compose exec backend uv run python -m app.db.seed

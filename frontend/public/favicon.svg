@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="shieldGrad" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="16" y1="12" x2="48" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <filter id="shadow" x="0" y="2" width="64" height="62" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#1e3a8a" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Shield Body -->
+  <path d="M32 4L10 13V29.5C10 44.2 19.3 56.6 32 60C44.7 56.6 54 44.2 54 29.5V13L32 4Z" 
+        fill="url(#shieldGrad)" 
+        filter="url(#shadow)" />
+
+  <!-- Inner Subtle Glow Rim -->
+  <path d="M32 7.5L13.5 15.2V29.5C13.5 42.1 21.4 52.8 32 55.9C42.6 52.8 50.5 42.1 50.5 29.5V15.2L32 7.5Z" 
+        fill="url(#glowGrad)" />
+
+  <!-- Verification Checkmark / Life Symbol -->
+  <path d="M22 31.5L28.5 38L42 24.5" 
+        stroke="#ffffff" 
+        stroke-width="4.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+
+  <!-- Accent Shimmer Dot -->
+  <circle cx="43" cy="19" r="2.5" fill="#38bdf8" />
+</svg>

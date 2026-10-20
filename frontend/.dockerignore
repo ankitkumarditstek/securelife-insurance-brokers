@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+coverage
+.git
+.gitignore
+.env
+.env.*
+.prettierrc
+.prettierignore
+eslint.config.js

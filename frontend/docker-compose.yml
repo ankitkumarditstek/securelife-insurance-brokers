@@ -1,0 +1,16 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    container_name: securelife_frontend_dev
+    restart: unless-stopped
+    ports:
+      - '${PORT:-5173}:5173'
+    env_file:
+      - .env
+    environment:
+      - VITE_API_URL=${VITE_API_URL:-http://localhost:8000/api/v1}
+    volumes:
+      - .:/app
+      - /app/node_modules
